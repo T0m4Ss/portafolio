@@ -1,0 +1,99 @@
+/* ========================================
+   COSMIC DEV — Design Tokens & Base Styles
+   Aesthetic: Cinematic Deep-Space / Refined
+======================================== */
+
+:root {
+  /* --- Color System --- */
+  --void: #010208;
+  --deep: #04060f;
+  --surface: rgba(10,14,26,0.55);
+  --surface-solid: #0a0e1a;
+  --surface-raised: rgba(16,22,38,0.6);
+  --glass: rgba(10,14,26,0.45);
+  --glass-strong: rgba(10,14,26,0.7);
+  --border: rgba(255,255,255,0.04);
+  --border-hover: rgba(255,255,255,0.08);
+  --border-glow: rgba(0,229,255,0.12);
+
+  --accent: #00e5ff;
+  --accent-dim: rgba(0,229,255,0.12);
+  --accent-glow: rgba(0,229,255,0.2);
+  --warm: #ff6b35;
+  --warm-dim: rgba(255,107,53,0.12);
+  --lavender: #a78bfa;
+  --lavender-dim: rgba(167,139,250,0.1);
+
+  --text-primary: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.55);
+  --text-tertiary: rgba(255,255,255,0.28);
+
+  /* --- Typography --- */
+  --font-display: 'Jost', sans-serif;
+  --font-body: 'Ubuntu', sans-serif;
+
+  /* --- Spacing --- */
+  --section-py: clamp(5rem, 12vh, 9rem);
+
+  /* --- Blur --- */
+  --blur-sm: blur(12px);
+  --blur-md: blur(20px);
+  --blur-lg: blur(32px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--void);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--void);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
+
+/* --- Noise grain overlay --- */
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Twinkling stars --- */
+.twinkling-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  animation: twinkle var(--twinkle-dur, 3s) ease-in-out var(--twinkle-delay, 0s) infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.08; transform: scale(0.7); }
+  50%       { opacity: 0.9;  transform: scale(1.6); box-shadow: 0 0 6px 2px rgba(190,220,255,0.55); }
+}
+
+/* --- Global helpers --- */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 3rem);
+}
