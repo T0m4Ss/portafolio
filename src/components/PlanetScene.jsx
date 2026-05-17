@@ -4,17 +4,18 @@ import { Sphere, Ring, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 const TWO_PI = Math.PI * 2;
+const BASE = import.meta.env.BASE_URL;
 
 const PLANET_TEXTURES = {
-  sun:     '/textures/2k_sun.jpg',
-  mercury: '/textures/2k_mercury.jpg',
-  venus:   '/textures/2k_venus_surface.jpg',
-  earth:   '/textures/2k_earth_daymap.jpg',
-  mars:    '/textures/2k_mars.jpg',
-  jupiter: '/textures/2k_jupiter.jpg',
-  saturn:  '/textures/2k_saturn.jpg',
-  uranus:  '/textures/2k_uranus.jpg',
-  neptune: '/textures/2k_neptune.jpg',
+  sun:     `${BASE}textures/2k_sun.jpg`,
+  mercury: `${BASE}textures/2k_mercury.jpg`,
+  venus:   `${BASE}textures/2k_venus_surface.jpg`,
+  earth:   `${BASE}textures/2k_earth_daymap.jpg`,
+  mars:    `${BASE}textures/2k_mars.jpg`,
+  jupiter: `${BASE}textures/2k_jupiter.jpg`,
+  saturn:  `${BASE}textures/2k_saturn.jpg`,
+  uranus:  `${BASE}textures/2k_uranus.jpg`,
+  neptune: `${BASE}textures/2k_neptune.jpg`,
 };
 
 function CameraRig({ cameraTarget, planetTarget }) {
@@ -170,9 +171,9 @@ function Background({ texture }) {
 
 function Scene({ planets, cameraTarget, planetTarget }) {
   const textures = useTexture(PLANET_TEXTURES);
-  const saturnRingTexture = useTexture('/textures/2k_saturn_ring_alpha.png');
-  const moonTexture = useTexture('/textures/2k_moon.jpg');
-  const bgTexture = useTexture('/textures/8k_stars_milky_way.jpg');
+  const saturnRingTexture = useTexture(`${BASE}textures/2k_saturn_ring_alpha.png`);
+  const moonTexture = useTexture(`${BASE}textures/2k_moon.jpg`);
+  const bgTexture = useTexture(`${BASE}textures/8k_stars_milky_way.jpg`);
 
   return (
     <>
